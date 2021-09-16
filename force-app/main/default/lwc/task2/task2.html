@@ -1,0 +1,25 @@
+<template >
+    <div class="container">
+        <lightning-record-edit-form
+        record-id={recordId}
+        object-api-name="Customer_report__c" 
+        onsubmit={handleSubmit} 
+        onsuccess={handleSucess}>
+             <lightning-input-field field-name="Account__c"></lightning-input-field>
+              <lightning-input-field field-name="Name"></lightning-input-field>
+              <lightning-input-field field-name="Id"></lightning-input-field>
+              <lightning-input-field field-name="Code__c"></lightning-input-field>
+              <lightning-input-field field-name="Data_Source__c"></lightning-input-field>
+              <lightning-input-field field-name="Frequency__c"></lightning-input-field>
+              <lightning-input-field field-name="FTP__c"></lightning-input-field>
+              <lightning-input-field field-name="ICO__c"></lightning-input-field>
+              <lightning-input-field field-name="Note__c"></lightning-input-field>  
+              <lightning-input-field field-name="Parcel__c"></lightning-input-field>  
+              <lightning-input-field field-name="Schedule__c"></lightning-input-field>  
+              <lightning-input-field field-name="Template__c"></lightning-input-field>  
+              <lightning-input-field field-name="Title__c"></lightning-input-field>  
+              <lightning-input-field field-name="ReportTemplateID__c"></lightning-input-field> 
+              <lightning-button label='update' type='submit'></lightning-button> 
+        </lightning-record-edit-form>
+    </div>
+</template>
