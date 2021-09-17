@@ -1,7 +1,4 @@
 public class CustomerReport extends TriggerHandler {
-    public CustomerReport() {
-        this.setMaxLoopCount(7);
-    }
     public override void beforeUpdate(){
         updateOrInsert();
     }
