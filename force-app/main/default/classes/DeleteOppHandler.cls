@@ -1,8 +1,9 @@
 public class DeleteOppHandler extends TriggerHandler {
   public override void beforeDelete() {
+    //List of msg     
     List<Messaging.SingleEmailMessage> mails = new List<Messaging.SingleEmailMessage>();
     List<Opportunity> list_opp_all = new List<Opportunity>();
-    //user email
+    //Take username
     String userName = UserInfo.getUserName();
     User activeUser = [
       SELECT Email, Name
@@ -11,7 +12,7 @@ public class DeleteOppHandler extends TriggerHandler {
       LIMIT 1
     ];
     String userEmail = activeUser.Email;
-    //all deleted account
+    //Find deleted Acc
     for (Account acc : (List<Account>) Trigger.old) {
       List<Opportunity> list_opp = [
         SELECT Name, Id
@@ -19,7 +20,7 @@ public class DeleteOppHandler extends TriggerHandler {
         WHERE AccountId = :acc.Id
       ];
       list_opp_all.addAll(list_opp);
-      //if we delete - create one msg
+      //Create msg
       Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
       mail.setToAddresses(new List<String>{ 'mamchak2000@gmail.com' });
       mail.setSenderDisplayName('MAIL');
@@ -37,7 +38,9 @@ public class DeleteOppHandler extends TriggerHandler {
       mail.setHtmlBody(body);
       mails.add(mail);
     }
+    //Add to list     
     Messaging.sendEmail(mails);
+   //Delete msg     
     delete list_opp_all;
   }
 }
