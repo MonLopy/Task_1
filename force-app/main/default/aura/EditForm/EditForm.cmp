@@ -1,35 +1,15 @@
-<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,lightning:actionOverride" access="global" >
-    <aura:attribute name="recordId" type="String" />   
-        <lightning:notificationsLibrary aura:id="notifLib"/>
-        <lightning:card iconName="custom:custom91" title="Add a Report">
-        <lightning:recordEditForm aura:id="editForm" 
-        recordId="{!v.recordId}" 
-        objectApiName="Customer_report__c" 
-        onsubmit="{!c.handleSubmit}"
-        onsuccess="{!c.handleSuccess}" >
-        <lightning:messages />
-        <lightning:inputField fieldName="Account__c"/>
-        <lightning:inputField fieldName="Name" />
-        <lightning:outputField fieldName="Id" />
-        <lightning:inputField fieldName="Code__c" />
-        <lightning:inputField fieldName="Data_Source__c" />
-        <lightning:inputField fieldName="Frequency__c" />
-        <lightning:inputField fieldName="FTP__c" />
-        <lightning:inputField fieldName="ICO__c" />
-        <lightning:inputField fieldName="Note__c" />
-        <lightning:inputField fieldName="Parcel__c" />
-        <lightning:inputField fieldName="Schedule__c" />
-        <lightning:inputField fieldName="Template__c" />
-        <lightning:inputField fieldName="Title__c" />
-        <lightning:outputField fieldName="ReportTemplateID__c" />
-        <lightning:button class="slds-m-top_small" type="submit" label="update" />
-    </lightning:recordEditForm>
-
-</lightning:card>
-<!-- button clode
-trigger//insert  and update 
-picklist ;
-lwc record/edit/rosponse
--->
+<aura:component
+  implements="flexipage:availableForAllPageTypes,force:hasRecordId,lightning:actionOverride"
+  access="global"
+>
+  <aura:attribute name="recordId" type="String" />
+  <lightning:card>
+    <lightning:recordForm
+      objectApiName="Customer_report__c"
+      onsuccess="{!c.handleSuccess}"
+      recordId="{!v.recordId}"
+      layoutType="Full"
+    >
+    </lightning:recordForm>
+  </lightning:card>
 </aura:component>
-
