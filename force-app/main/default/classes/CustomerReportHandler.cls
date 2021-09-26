@@ -11,11 +11,9 @@ public class CustomerReportHandler extends TriggerHandler {
   public override void afterUpdate() {
     addingNamesInNotes();
   }
+
   // If  Frequency in Custom object contains - D, we assign link to Website in Account
   public void updateAccountWebsite() {
-    if (TriggerHandler.isBypassed('TriggerHandler')) {
-      return;
-    }
     List<Id> listIs = new List<Id>();
     for (Customer_report__c o : (List<Customer_report__c>) Trigger.new) {
       if (o.Frequency__c != null) {
@@ -32,15 +30,10 @@ public class CustomerReportHandler extends TriggerHandler {
     for (Account acc : AccList) {
       acc.Website = 'https://www.google.com/';
     }
-    TriggerHandler.bypass('TriggerHandler');
     update AccList;
-    TriggerHandler.clearAllBypasses();
   }
   //Adding Account Name and Company Name into Notes field in Custom report obj
   public void addingNamesInNotes() {
-    if (TriggerHandler.isBypassed('TriggerHandler')) {
-      return;
-    }
     List<Customer_Report__c> CustRep = [
       SELECT Id, Account__r.Name, createdby.CompanyName
       FROM Customer_Report__c
