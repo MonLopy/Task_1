@@ -1,6 +1,8 @@
 trigger CustomReportTrigger on Customer_Report__c(
   before insert,
-  before update
+  before update,
+  after insert,
+  after update
 ) {
   new CustomerReportHandler().run();
 }
