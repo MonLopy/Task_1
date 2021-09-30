@@ -10,7 +10,7 @@ public class OpportunityAmountHandler extends TriggerHandler{
     List<Id> accId = new List<Id>();
     for (Opportunity opp : (List<Opportunity>) Trigger.new) {
       if (opp.Amount != null) {
-        if (opp.Amount < 5000 && opp.Amount >= 1) {
+        if (opp.Amount <= 5000 && opp.Amount >= 1) {
           accId.add(opp.AccountId);
           prioritet='low';
         } else if (opp.Amount >= 500000) {

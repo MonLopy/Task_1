@@ -15,30 +15,30 @@ const columns = [
   { label: "Closed Date", fieldName: "CloseDate" },
   { label: "Amount", fieldName: "Amount", type: "currency" }
 ];
+
 export default class TableForOpp extends LightningElement {
-    consData = [];
-    columns = columns;
+  @track areDetailsVisible = true;
+  consData = [];
+  columns = columns;
+  test(event) {}
+  @wire(getOppRecords)
+  contacts({ error, data }) {
+    if (data) {
+      let tempConList = [];
 
-    @wire(getOppRecords)
-    contacts({ error, data }) {
+      data.forEach((record) => {
+        let tempConRec = Object.assign({}, record); //copy
+        tempConRec.recordLink = "/" + tempConRec.Id;
+        tempConList.push(tempConRec);
+      });
 
-        if (data) {
-            let tempConList = []; 
-            
-            data.forEach((record) => {
-                let tempConRec = Object.assign({}, record);  //copy
-                tempConRec.recordLink = '/' + tempConRec.Id;
-                tempConList.push(tempConRec);
-                
-            });
-            
-            this.consData = tempConList;
-            this.error = undefined;
-
-            console.table(this.consData);
-
-        } else if (error) {
-            this.error = result.error;
-        }
+      this.consData = tempConList;
+      if (this.consData.length == 0) {
+        this.areDetailsVisible = false;
+      }
+      this.error = undefined;
+    } else if (error) {
+      this.error = result.error;
     }
+  }
 }

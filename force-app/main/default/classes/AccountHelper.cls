@@ -1,43 +1,46 @@
 public class AccountHelper {
-  public void sendMsg() {
+  public static void sendMsg(List<Account> accs) {
     List<Messaging.SingleEmailMessage> mails = new List<Messaging.SingleEmailMessage>();
-    List<Opportunity> list_opp_all = new List<Opportunity>();
-    //user email
-    EmailTemplate template=[SELECT Id,Body,HtmlValue,Subject FROM EmailTemplate WHERE Name='Delete Account'];
-    String userName = UserInfo.getUserName();
-    User activeUser = [
-      SELECT Email, Name
-      FROM User
-      WHERE Username = :userName
-      LIMIT 1
+    List<EmailTemplate> template = [
+      SELECT Id, Body, HtmlValue, Subject,Name
+      FROM EmailTemplate
+      WHERE Name = 'Delete Account' 
     ];
-    String userEmail = activeUser.Email;
-    //all deleted account
-    List<Opportunity> list_opp = new List<Opportunity>{};
-    List<Account> ac = [SELECT Id, Name FROM Account WHERE id = :Trigger.old];
-    for (Account a : ac) {
-      list_opp = [SELECT Name, Id FROM Opportunity WHERE AccountId = :a.Id];
+    List<Opportunity> listOpp = [
+      SELECT Name, Id, AccountId
+      FROM Opportunity
+      WHERE AccountId IN :accs
+    ];
+    Map<Id, List<Opportunity>> m1 = new Map<Id, List<Opportunity>>{};
+    for (Opportunity oo : listOpp) {
+      if (!m1.containsKey(oo.AccountId)) {
+        m1.put(oo.AccountId, new List<Opportunity>());
+      }
+      m1.get(oo.AccountId).add(oo);
     }
-    for (Account acc : ac) {
-      list_opp_all.addAll(list_opp);
+
+    for (Id acc : m1.keySet()) {
       //if we delete - create one msg
-      Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-      mail.setToAddresses(new List<String>{ 'mamchak2000@gmail.com' });
-      mail.setSenderDisplayName('MAIL');
-      mail.setSubject('Account was deleted');
-      String plainText= template.body;
+      Messaging.SingleEmailMessage mail = Messaging.renderStoredEmailTemplate(template[0].Id, UserInfo.getUserId(), acc);
+      String emailSubject = mail.getSubject();
+      String emailTextBody = mail.getPlainTextBody();
+      mail.setTargetObjectId(UserInfo.getUserId());
+      mail.setSubject(emailSubject);
+      mail.setSaveAsActivity(false);
+      mail.setWhatId(acc);
+
       // change body
-      plainText=plainText.replace('!{Account.Name}', acc.Name);
-      plainText+='<br>';
+      String plainText =  '<br>';
       Integer i = 1;
-      for (Opportunity opp : list_opp) {
-        plainText+= i + '. ' + opp.id + ', ' + opp.Name + '.<br>';
+      for (Opportunity opp : listOpp) {
+        plainText += i + '. ' + opp.Id + ',' + opp.Name + '.<br>';
         i++;
       }
-      mail.setHtmlBody(plainText);
+      emailTextBody += plainText;
+      mail.setHtmlBody(emailTextBody);
       mails.add(mail);
     }
     Messaging.sendEmail(mails);
-    delete list_opp_all;
+    delete listOpp;
   }
 }

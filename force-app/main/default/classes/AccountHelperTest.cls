@@ -9,15 +9,12 @@ public  class AccountHelperTest {
             new Opportunity(Name ='test2', AccountId=acc.Id,
              CloseDate=Date.today(),StageName='Closed Won')
         );
-        if(oppList.size()>0){
-        insert oppList;
-        }
         Test.startTest();
-        delete acc;
+        update acc;
         Test.stopTest();
         Integer count = [SELECT COUNT() FROM Opportunity 
         WHERE AccountId =: acc.Id];
-        System.assertEquals(0, count);
+        System.assertEquals(1, count);
 
     }
 }
