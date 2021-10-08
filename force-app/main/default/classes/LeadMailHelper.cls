@@ -12,14 +12,14 @@ public class LeadMailHelper {
       WHERE Name LIKE 'Hot Lead V2'
     ];
     List<Id> listIs = new List<Id>();
-    for (Lead o : (List<Lead>) led) {
-        if (o.Status == 'Working - Contacted') {
-          listIs.add(o.Id);
+    for (Lead l : (List<Lead>) led) {
+        if (l.Status == 'Working - Contacted') {
+          listIs.add(l.Id);
       }
     }
       List<Lead> leads = [
       SELECT Id, Name, LeadSource
-      FROM Lead
+      FROM Lead 
       WHERE Id =:listIs
     ];
     for (Lead l : leads) {

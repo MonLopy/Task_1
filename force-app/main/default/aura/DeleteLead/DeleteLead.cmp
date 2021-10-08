@@ -1,0 +1,3 @@
+<aura:component  implements="force:lightningQuickAction,flexipage:availableForAllPageTypes">
+    <c:deletionButtonLead></c:deletionButtonLead>
+</aura:component>	

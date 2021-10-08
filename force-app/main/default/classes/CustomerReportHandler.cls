@@ -6,7 +6,6 @@ public override void beforeUpdate(){
    AddingLinkInAccount();
    
 } 
-<<<<<<< HEAD
 //If Frequency hac D - Account Site gets URL
 public void AddingLinkInAccount(){
     List<Id> listIs = new List<Id>();
@@ -18,40 +17,6 @@ public void AddingLinkInAccount(){
       List<Account> AccList = [SELECT Id, Website FROM Account WHERE Id IN :listIs];
         for (Account acc : AccList) {
             acc.Website = 'https://www.google.com/';
-=======
-public override void afterInsert(){
-    ChangeNotesInCustRep();
-} 
-public override void afterUpdate(){
-    ChangeNotesInCustRep();
-} 
-//Create note From Account name and company name
-public void ChangeNotesInCustRep(){
-    if (TriggerHandler.isBypassed('TriggerHandler')){return;}
-    List<Customer_Report__c> CustRep = [SELECT Id, Account__r.Name, createdby.CompanyName FROM Customer_Report__c WHERE Id IN :Trigger.newMap.keySet()];
-    for (Customer_Report__c cr : CustRep) {
-        cr.Note__c = cr.Account__r.Name + cr.createdby.CompanyName;
-    }
-    TriggerHandler.bypass('TriggerHandler');
-    update CustRep;
-    TriggerHandler.clearAllBypasses();
-}
-//If Frequency hac D - Account Site gets URL
-public void AddingLinkInAccount(){
-    if (TriggerHandler.isBypassed('TriggerHandler')){return;}
-    List<Id> listIs = new List<Id>();
-    for(Customer_Report__c CustRep : (List<Customer_Report__c>) Trigger.new) {
-        if(CustRep.Frequency__c != null ){
-            if(CustRep.Frequency__c.contains('D')){
-                listIs.add(CustRep.Account__c);
-            }
         }
-      }
-      List<Account> AccList = [SELECT Id, Site FROM Account WHERE Id IN :listIs];
-        for (Account acc : AccList) {
-            acc.Site = 'https://www.google.com/';
->>>>>>> a94c5a9b35e5e6f66b055e4d8253523f96626dbe
-        } 
-        update AccList;
 }
 }
