@@ -1,0 +1,27 @@
+<apex:component layout="none" controller="Test8Controller">
+   <head>
+        <apex:stylesheet value="{!$Resource.PageCSS}" />
+    </head>
+    <body>
+    <div class="logo">
+		<apex:image value="{!URLFOR($Resource.Logo)}"/>
+    </div>
+    <div class='date'>
+    	{!CASE( IF( (MONTH(TODAY()) ) > 12,
+               (MONTH(TODAY())) - 12,
+                MONTH(TODAY())),
+                 1, "January",
+                 2, "February",
+                 3, "March",
+                 4, "April",
+                 5, "May",
+                 6, "June",
+                 7, "July",
+                 8, "August",
+                 9, "September",
+                10, "October",
+                11, "November",
+                 "December")} {!DAY(TODAY())},{!YEAR(TODAY())}<br/>         
+    </div>       
+    </body>
+</apex:component>

@@ -1,0 +1,54 @@
+<apex:component >
+    <apex:attribute name="pageController" type="Test8Controller"  description="The controller for the page." />
+    <div class="sign" >
+        <div class='table_one'>
+       <table>
+                <tr>
+                	<td>
+                    	<apex:outputText value="______________________________"></apex:outputText>
+                    </td>
+                    </tr>
+                    <tr>
+                    	<td>
+                    	<apex:outputText value="______________________________"></apex:outputText>
+                    </td>
+                    </tr>
+                <tr>
+                    	<td>
+                    	<apex:outputText value="______________________________"></apex:outputText>
+                    </td>
+                    </tr>
+                  <tr>
+                    	<td>
+                    	<apex:outputText value="{!pageController}"></apex:outputText>
+                    </td>
+                    </tr>
+            </table>
+        </div>
+        <div class='table_two'>
+                   <table>
+                <tr>
+                	<td>
+                    	<apex:outputText value="______________________________"></apex:outputText>
+                    </td>
+                    </tr>
+                    <tr>
+                    	<td>
+                    	<apex:outputText value="______________________________"></apex:outputText>
+                    </td>
+                    </tr>
+                <tr>
+                    	<td>
+                    	<apex:outputText value="______________________________"></apex:outputText>
+                    </td>
+                    </tr>
+                 <tr>
+                    	<td>
+                    	<apex:outputText value="GultarShop Site Guest User"></apex:outputText>
+                    </td>
+                    </tr>
+            </table>
+        </div>
+        
+    </div>
+</apex:component>

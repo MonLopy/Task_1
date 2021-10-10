@@ -1,0 +1,72 @@
+*{
+  margin: 0;
+  box-sizing:border-box;
+}
+.test{
+  width:100%;
+}
+@page{
+  margin-bottom: 3cm;
+   @bottom-center{
+      content:"Page " counter(page) " of " counter(pages);
+       }
+    @top-left{
+        content:element(logo);
+    }
+    @top-right{
+         content:element(date);
+    }
+}
+.logo{
+   position: running(logo); 
+}
+.date{
+    margin-top:20px;
+   position: running(date); 
+}
+.main_text{
+    text-align:center;
+	line-height: 1000px;
+    font-size:26px;
+}
+.b-logo{
+    width:100%;
+	display:flex;
+    justify-content: space-between;
+    }
+.date{
+    font-size:22px;
+    }
+.b-terms{
+    margin-top:50px;
+} 
+.b-terms h2{
+    font-size:26px;
+}
+.text{
+    margin-top:60px;
+    font-size:14px;
+    line-height:35px;
+}
+.b-subjects {
+    margin-top:150px;
+}
+.sign{
+    text-align: center; 
+    vertical-align: middle;
+}
+.table_one{
+    display:inline-block;
+    position: absolute;
+    margin-left:0px;
+	margin-top: 0px;
+    
+}
+.table_two{
+    display:inline-block;
+    position: absolute;
+    right:10%;
+}
+.b-signature{
+    margin-top:400px;
+}

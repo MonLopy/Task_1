@@ -1,0 +1,18 @@
+<apex:component >
+    <div class="text">
+            <apex:pageMessage severity="info" 
+   				strength="1" 
+  				summary="{!$Label.pdf}" 
+ 			/>
+                 <apex:pageMessage severity="info" 
+   				strength="1" 
+  				summary="{!$Label.pdf2}" 
+ 			/>
+        <apex:pageMessage severity="info" 
+   				strength="1" 
+  				summary="{!$Label.pdf3}" 
+ 			/>
+                
+    </div>
+
+</apex:component>

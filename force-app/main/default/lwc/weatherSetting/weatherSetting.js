@@ -1,4 +1,5 @@
-import { LightningElement } from 'lwc';
+import { LightningElement } from "lwc";
 
-
-export default class WeatherSetting extends LightningElement {}
+export default class WeatherSetting extends LightningElement {
+    
+}

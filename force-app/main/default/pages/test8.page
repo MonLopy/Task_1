@@ -1,0 +1,34 @@
+<apex:page standardController="Opportunity" applyHtmlTag="false" showHeader="false" renderAs="pdf"
+           extensions="OpportunityControllerExtension">
+<html>
+    <head>
+        <apex:stylesheet value="{!$Resource.PageCSS}" />
+    </head>
+    <body>
+        <c:Logo_component ></c:Logo_component>   
+        <h2 class='main_text'>
+          Contract between {!opportunity.Account.Name} and {!opportunity.Company_Deal__c}
+        </h2>       
+        <div style="page-break-after:always;">
+            <div class="b-terms"> 
+             <h2>General terms and conditions:</h2>
+                <c:textLorem ></c:textLorem>
+                </div>
+     </div>
+    <div class="b-subjects">
+           <apex:pageBlock title="Subject of contract">
+        <apex:pageBlockTable style="border:0.8px solid black;" value="{!childOpps}" var="products">
+            <apex:column style="width:50%;border:0.8px solid black;"  value="{!products.Name}" />
+            <apex:column style="border:0.8px solid black;" value="{!products.Quantity}" />
+            <apex:column style="border:0.8px solid black;" value="{!products.UnitPrice}" />
+            <apex:column style="border:0.8px solid black;" value="{!products.TotalPrice}" />
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+            </div>
+        <div class="b-signature">
+            <h2>Signature</h2>
+            <c:signatureTable pageController="{!opportunity.Account.Name}"></c:signatureTable>
+        </div>
+    </body>
+</html>
+</apex:page>
