@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html >
+<head>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+    <title>Lead Form</title>
+    <link href="LeadForm.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="b-container">
+    <div class="b-form">
+
+    <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+    
+    <input type=hidden name="oid" value="00D0900000B63nf">
+    <input type=hidden name="retURL" value="http://salesforce.com">
+    <h3>Adding your information and question</h3>
+    <div class="b-names">
+        <div>
+    <label for="first_name">First Name*</label><input  id="first_name" class="inpt" maxlength="40" name="first_name" size="20" type="text" placeholder="Enter First Name" required/><br>
+    </div>
+    <div> 
+    <label for="last_name">Last Name*</label><input  id="last_name" class="inpt" maxlength="80" name="last_name" size="20" type="text" placeholder="Enter Last Name" required/><br>
+    </div>
+    </div>  
+    <label for="email">Email</label><input  id="email" class="inpt" maxlength="80" name="email" size="20" type="text" placeholder="Enter Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="uncorrect mail"  required/><br>
+    <label for="phone">Phone</label><input  id="phone" class="inpt" maxlength="40" name="phone" size="20" type="text" placeholder="Enter Phone" pattern="[1-9]{z}[0-9]{11}" title="uncorrect phone"/><br>
+    <div class="hide">
+    <label for="lead_source">Lead Source</label><select  id="lead_source" name="lead_source"  required >
+    <!-- <option value="">--None--</option> -->
+    <option value="Web" selected>Web</option>
+    <option value="Phone Inquiry">Phone Inquiry</option>
+    <option value="Partner Referral">Partner Referral</option>
+    <option value="Purchased List">Purchased List</option>
+    <option value="Other">Other</option>
+    </select><br>
+    </div>  
+    <span>Interested Product:</span><select  id="00N0900000HT9mi" name="00N0900000HT9mi" title="Interested Product"><option value="">--None--</option><option value="Sales Cloud">Sales Cloud</option>
+    <option value="Service Cloud">Service Cloud</option>
+    <option value="Community">Community</option>
+    <option value="Cloud">Cloud</option>
+    <option value="Marketing Cloud">Marketing Cloud</option>
+    <option value="Integration Cloud">Integration Cloud</option>
+    </select><br>
+    
+    <textarea  id="00N0900000HT9mnEAD" name="00N0900000HT9mnEAD" rows="7" type="text" wrap="soft" placeholder="Leave here your questions"></textarea>
+    
+    <script>CKEDITOR.timestamp = '4.14.0.3';
+    var protocolAndHost = window.location.protocol + '//' + window.location.host;
+    
+    var editor = CKEDITOR.replace('00N0900000HT9mnEAD', {
+    removePlugins : 'elementspath,maximize,image,tabletools,liststyle,contextmenu,resize',
+    baseHref : protocolAndHost + '/ckeditor/ckeditor-4.x/rel/',
+    customConfig : '/ckeditor/ckeditor-4.x/rel/sfdc-config.js',
+    height : '425',
+    bodyId : '00N0900000HT9mnEAD_rta_body',
+    toolbar : 'SalesforceBasic',
+    sfdcLabels :{CkeLineHeight : { secondValue : '1.15', singleValue : 'Single', doubleValue : 'Double', title : 'Line Height', thirdValue : '1.5'}, CkeQuickText : { title : 'Insert quick text'}, CkeMediaEmbed : { iframeMissing : 'Invalid &lt;iframe&gt; element. Please use valid code from the approved sites.', subtitle : 'Paste &amp;lt;iframe&amp;gt; code here:', description : 'Use &lt;iframe&gt; code from an approved video source.', title : 'Embed Multimedia Content', exampleTitle : 'Example:', example : '\n            \n                &lt;iframe width=\&quot;560\&quot; height=\&quot;315\&quot; src=\&quot;https://www.youtube.com/embed/KcOm0TNvKBA\&quot; frameborder=\&quot;0\&quot; allowfullscreen&gt;&lt;/iframe&gt;\n            \n        '}, CkeImageMenu : { uploadFile : ' Browse or Upload', uploadCms : 'Salesforce CMS', pasteUrl : 'Paste Image URL', uploadUrl : 'Web Image', uploadSFFile : 'Salesforce Files', title : 'Insert images into your message'}, CkeImagePaste : { CkeImagePasteWarning : 'Pasting an image is not working properly with Firefox, please use [Copy Image location] instead.'}, CkeImageDialog : { infoTab_desc_info : 'Enter a description of the image for visually impaired users', uploadTab_desc : 'Description', defaultImageDescription : 'User-added image', uploadTab_file_info : 'Maximum size 1 MB. Only PNG, GIF or JPEG', uploadTab_desc_info : 'Enter a description of the image for visually impaired users', imageUploadLimit_info : 'Max number of upload images exceeded', btn_insert_tooltip : 'Insert Image', httpUrlWarning : 'Are you sure you want to use an http URL? Using http image URLs may result in security warnings about insecure content. To avoid these warnings, use https image URLs instead.', title : 'Insert Image', error : 'Error:', uploadTab : 'Upload Image', wrongFileTypeError : 'You can insert only .gif .jpeg and .png files.', infoTab_url : 'URL', infoTab : 'Web Address', infoTab_url_info : 'Example: http://www.mysite.com/myimage.jpg', missingUrlError : 'You must enter a URL', uploadTab_file : 'Select Image', btn_update_tooltip : 'Update Image', infoTab_desc : 'Description', btn_insert : 'Insert', btn_update : 'Update', btn_upadte : 'Update', invalidUrlError : 'You can only use http:, https:, data:, //, /, or relative URL schemes.'}, sfdcSwitchToText : { sfdcSwitchToTextAlt : 'Use plain text'}, CkeSmartLink : { SmartLinkContextMenuEdit : 'Edit Smart Link', title : 'Insert a Smart Link'}},
+    contentsCss: ['/ckeditor/ckeditor-4.x/rel/contents.css', '/sCSS/52.0/sprites/1619542308000/Theme3/default/gc/CKEditor.css', '/sCSS/52.0/sprites/1619542308000/Theme3/default/gc/HtmlDetailElem.css'],
+    disableNativeSpellChecker : false,
+    language : 'en-US',
+    allowIframe : false,
+    isPardotOrg : false,
+    isCmsOnly : false,
+    sharedSpaces : { top : 'cke_topSpace', bottom : ' cke_bottomSpace' }
+    ,filebrowserImageUploadUrl : '/_ui/common/request/servlet/RtaImageUploadServlet?_CONFIRMATIONTOKEN=VmpFPSxNakF5TVMweE1DMHdOVlF4T0Rvek1Eb3pNUzQzTlRsYSwybGpiUnJKclZkOEIwRmUyUGRMajhHLE5HRm1NemMy'
+    ,extraPlugins : 'sfdcImage,sfdcMediaEmbed,sfdcSmartLink,sfdcCodeBlock,sfdcVfAjax4J,sfdcLineHeight,sfdcQuickText'
+    });
+    
+    editor.on('instanceReady', function( evt ) {
+        try {
+            var id = evt.editor.name;
+            CKiframe = document.getElementById('cke_' + id).querySelector('iframe');
+            meta = document.createElement('meta');
+            meta.setAttribute('name', 'referrer');
+            meta.setAttribute('content', 'no-referrer');
+            CKiframe.contentDocument.head.appendChild(meta);
+        } catch(e) {}
+    } );
+    
+    </script><br>
+    
+    <input type="submit" name="submit" class="btn">
+    
+    </form>
+</div>
+</div>
+</body>
+</html>     

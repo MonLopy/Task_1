@@ -12,15 +12,15 @@ const columns = [
     }
   },
   // { label: "Name", fieldName: "Name", type: "text" },
-  { label: "City name", fieldName: "City_name__c", type: "text" },
-  { label: "Date", fieldName: " Date__c" },
-  { label: "Humidity", fieldName: " Humidity__c" },
-  { label: "Temperature", fieldName: "Temperature__c" },
-  { label: "Temp. feels like", fieldName: "Temp_feels_like__c" },
-  { label: "Description", fieldName: "Weather_description__c", type: "text" },
+  { label: "City name", fieldName: "city_name__c", type: "text" },
+  { label: "Date", fieldName: " date__c" },
+  { label: "Humidity", fieldName: " humidity__c" },
+  { label: "Temperature", fieldName: "temperature__c" },
+  { label: "Temp. feels like", fieldName: "temp_feels_like__c" },
+  { label: "Description", fieldName: "weather_description__c", type: "text" },
   { label: "Pressue", fieldName: "pressure__c" },
-  { label: "Latitude", fieldName: "Latitude__c" },
-  { label: "Longitude", fieldName: "Longitude__c" }
+  { label: "Latitude", fieldName: "latitude__c" },
+  { label: "Longitude", fieldName: "longitude__c" }
 ];
 export default class WeatherPreview extends LightningElement {
   @track areDetailsVisible = true;

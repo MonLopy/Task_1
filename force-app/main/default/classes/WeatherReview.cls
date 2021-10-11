@@ -16,4 +16,14 @@ public with sharing class WeatherReview {
       FROM Weather__c
     ];
   }
+  @AuraEnabled(cacheable=true)
+  public static Weather_Setting__c getWeatherSetting() {
+    return [
+      SELECT
+        Id,
+        City_name__c,
+        Language__c
+      FROM Weather_Setting__c LIMIT 1
+    ];
+  }
 }
